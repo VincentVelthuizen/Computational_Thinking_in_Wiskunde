@@ -1,0 +1,26 @@
+EXPORT KGV(VAR1, VAR2)
+BEGIN
+  LOCAL iterator1 := 1, iterator2 := 1, veelvoud, veelvouden1 := {}, veelvouden2 := {};
+  FOR veelvoud FROM 1 TO VAR2 DO
+    veelvouden1 := CONCAT(veelvouden1,{VAR1*veelvoud});
+  END;
+  PRINT();
+  PRINT(veelvouden1);$\label{lst:kgv:hulp1}$
+
+  FOR veelvoud FROM 1 TO VAR1 DO
+    veelvouden2 := CONCAT(veelvouden2,{VAR2*veelvoud});
+  END;
+  PRINT(veelvouden2);$\label{lst:kgv:hulp2}$
+
+  WHILE iterator1 <= VAR2 AND iterator2 <= VAR1 DO
+    PRINT("vergelijk " + veelvouden1(iterator1) + " en " + veelvouden2(iterator2));$\label{lst:kgv:hulp3}$
+    IF veelvouden1(iterator1) == veelvouden2(iterator2) THEN
+      RETURN veelvouden1(iterator1);
+    END;
+    IF veelvouden1(iterator1) < veelvouden2(iterator2) THEN
+      iterator1 := iterator1 + 1;
+    ELSE
+      iterator2 := iterator2 + 1;
+    END;
+  END;
+END;

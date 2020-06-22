@@ -1,0 +1,126 @@
+% De volgende regel helpt mijn TeX editor (TexShop) met compileren, ik hoop/verwacht dat het jou geen problemen oplevert
+%!TEX root =  ../../opdrachtenboek.tex
+
+%Hier moet nog een HELLO WORLD programma voor
+
+Wanneer je een programma schrijft hoef je niet altijd alle problemen zelf op te lossen.
+Soms kun je bestaande programma's (her)gebruiken.
+Het is verstandig om zeker te weten wat je hulpprogramma precies doet, wat je moet invoeren en welke uitvoer je kunt verwachten.
+
+\begin{figure}[htbp]
+	\begin{center}
+		\screenshotHW{1hv/isdeler}
+		\caption{Open je eigen programma's door op ``gereedschapskist'', ``Gebr.'' te drukken.}
+		\label{fig:isdeler}
+	\end{center}
+\end{figure}
+
+
+\opdracht[1] In je programmacatalogus staat het programma \texttt{ISDELER}.
+
+	\? In \autoref{fig:isdeler} zie je hoe je programma's kan aanroepen. Beschrijf, op basis van wat je hier ziet, wat het programma \texttt{ISDELER} doet.
+	
+	\? Controleer met \texttt{ISDELER} of $2$ een deler is van $6$.
+	
+	\? Controleer met \texttt{ISDELER} of $2$ een deler is van $7$.
+	
+	\? Controleer met \texttt{ISDELER} je antwoord op vraag \opdracht{14}.
+\bigskip
+
+Je gaat nu een programma schrijven dat gebruik maakt van het sleutelwoord \lstinline|IF|.
+Je geeft een voorwaarde, die waar (\lstinline|true|, 1) of onwaar (\lstinline|false|, 0) moet zijn.
+Dit kan bijvoorbeeld door een vergelijking te schrijven. Gebruik hiervoor de symbolen onder Shift + 6.
+Wanneer de voorwaarde waar is dan wordt het \lstinline|THEN| deel van de code uitgevoerd, wanneer het niet waar is het \lstinline|ELSE| deel.
+Als je het \lstinline|ELSE| deel niet nodig hebt, dan mag je het weglaten zoals in \autoref{lst:ifthen}.
+
+\begin{lstlisting}[float=h, caption={IF-THEN-ELSE}, label={lst:ifthenelse}]
+IF voorwaarde THEN
+	// Dit gebeurt als de voorwaarde TRUE is.
+ELSE
+	// Dit gebeurt als de voorwaarde FALSE is.
+END;
+\end{lstlisting}
+
+\begin{lstlisting}[float=h, caption={IF-THEN}, label={lst:ifthen}]
+IF voorwaarde THEN
+	// Dit gebeurt als de voorwaarde TRUE is.
+END;
+\end{lstlisting}
+
+\opdracht[2]  Schrijf een programma dat 
+		\begin{itemize}
+			\item vraagt om twee getallen $a$ en $b$.
+		\end{itemize}
+		Als je deze getallen hebt ingevoerd, dan moet het programma zeggen
+		\begin{itemize}
+			\item ``$a$ is een deler van $b$'', \textbf{of}
+			\item ``$a$ is geen deler van $b$''.
+		\end{itemize}
+
+Voor de volgende opdracht vragen we de gebruiker slechts om \'e\'en getal.
+Je gaat zoeken naar alle delers van dat getal.
+Dit kun je doen door gebruik te maken van een \lstinline!FOR!-lus.
+De code in een \lstinline!FOR!-lus wordt herhaald waarbij de variabele met de ``stapper''-rol alle waarden in een bepaald bereik krijgt.
+
+\begin{lstlisting}[float=h, caption={FOR-lus}, label={lst:for}]
+LOCAL deler;
+FOR deler FROM 1 TO 3 DO
+	PRINT deler;
+END;
+\end{lstlisting}
+
+\opdracht[2] Schrijf een programma dat alle delers van een getal weergeeft.
+
+\opdracht[3] \label{ggdopdr}%
+Je gaat nu proberen om een programma te schrijven waarmee je de \ggd\ van  twee getallen kunt berekenen. 
+
+\? Beschrijf alle stappen die je programma moet doorlopen.
+\? Geef per stap aan hoe je je rekenmachine dit zou laten doen.
+%\? Geef per stap aan of je hiervoor een \lstinline!FOR!-lus, een while-lus, of een if wil gebruiken.
+\? Probeer nu de stappen in de goede volgorde te zetten.
+\? Schrijf een programma dat de \ggd\ van twee getallen geeft. Noem dit programma ``GGD''. \label{ggdopdreind}
+
+\opdracht[3] Je gaat nu het programma dat je in opdracht \refopdracht{ggdopdr}{ggdopdreind} hebt geschreven, testen.
+
+\? Controleer je code door te kijken of je de juiste antwoorden krijgt bij opdrachten \opdracht{15} en \opdracht{16}.
+\? Controleer of $\ggd(12,30)=\ggd(30,12)$. Controleer op dezelde manier vier opgaven van vraag \opdracht{15} en \opdracht{16}.
+\? Wat geeft jouw code voor $\ggd(1,8)$, $\ggd(9,9)$ en $\ggd(1,1)$?
+\? Kun je met jouw code vraag \opdracht{18(\textbf{f})} ook oplossen? Leg uit waarom wel of niet.
+\? Gebruik het testprogramma GGD\_Test dat je van je docent hebt gekregen om je programma GGD te testen. 
+
+\opdracht[4] \label{randvoorw}%
+Deze vraag gaat over het programma dat je geschreven hebt in \refopdracht{ggdopdr}{ggdopdreind}. We kijken wat jouw programma geeft voor $\ggd(a,b)$, voor verschillende waarden van $a$ en $b$.
+
+\? Wat gebeurt er als $a=0$  of $b=0$? En wat als $a=0$ en $b=0$?
+\? Wat gebeurt er als $a<0$ of $b<0$? En wat als $a<0$ en $b<0$?\label{negatief}
+\? Wat gebeurt er als $a$ of $b$ geen geheel getal is? En wat als ze dit allebei niet zijn?
+\? Wat is volgens jouw programma $\ggd(6,9\frac{1}{5})$?
+
+\opdracht[2]  Wat zou er gebeuren als je een programma alle veelvouden van twee getallen laat geven?
+
+\opdracht[3] \label{kgvopdr}%
+Je gaat nu proberen om een programma te schrijven waarmee je het \kgv\ van twee getallen kunt berekenen. 
+
+\? Schrijf een programma dat lijst met veelvouden van de twee getallen weergeeft. Denk na over een nuttig aantal veelvouden.
+\? Schrijf een programma dat het \kgv\ van twee getallen geeft.\label{kgvopdreind}
+
+\opdracht[3] Je gaat nu het programma dat je in opdracht \refopdracht{kgvopdr}{kgvopdreind} hebt geschreven, testen.
+
+\? Controleer je code door te kijken of je de juiste antwoorden krijgt bij vraag \opdracht{17} en \opdracht{18(\textbf {a,c})}.
+\? Controleer of $\kgv(8,12)=\kgv(12,8)$. Controleer dit ook voor alle opgaven van vraag \opdracht{17} en \opdracht{18(\textbf{a,c})}.
+\? Wat geeft jouw code voor $\kgv(1,8)$, $\kgv(9,9)$ en $\kgv(1,1)$?
+\? Kun je met jouw code vraag \opdracht{18(\textbf{e})} ook oplossen? Zo nee, leg uit waarom niet.
+
+\opdracht[4] Deze vraag gaat over het programma dat je geschreven hebt in \refopdracht{kgvopdr}{kgvopdreind}. We kijken wat jouw programma geeft voor $\kgv(a,b)$, voor verschillende waarden van $a$ en $b$.
+
+\? Wat gebeurt er als $a=0$  of $b=0$? En wat als $a=b=0$?
+\? Wat gebeurt er als $a<0$ of $b<0$? En wat als $a<0$ en $b<0$?
+\? Wat gebeurt er als $a$ of $b$ geen geheel getal is? En wat als ze dit allebei niet zijn?
+
+\opdracht[5] Je gaat nu kijken tussen de overeenkomsten van je programma van \refopdracht{ggdopdr}{ggdopdreind} en \refopdracht{kgvopdr}{kgvopdreind}. 
+Wat zijn de overeenkomsten tussen de programma's?
+
+\opdracht[6]In deze opdracht ga je nadenken over de gebruiksvriendelijkheid van je programma's.
+
+\? Schrijf een programma dat  de \ggd\ \textbf{en} het \kgv\ van twee getallen geeft.
+\? Denk na over de output van je programma. Snapt iemand die de code van jouw programma niet kent hoe de getallen ingevoerd moeten worden? Is duidelijk welke van de twee uitkomsten de \ggd\ en welke het \kgv\ is?

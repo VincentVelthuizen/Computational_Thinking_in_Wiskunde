@@ -1,0 +1,6 @@
+<li><a href="{% url 'kerndoelen' append %}">{{ level.long_name }}</a> {{level.get_covering}}</li>
+<ul>
+{% for sublevel in level.sub_level.all %}
+	{% include "sublevels.html" with level=sublevel append=segments|add:sublevel.short_name %}
+{% endfor %}
+</ul>

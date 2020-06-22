@@ -1,0 +1,12 @@
+EXPORT STATS(list)
+BEGIN
+  LOCAL modi, index;
+  PRINT();
+  PRINT("Gemiddelde: " + MEAN(list));
+  list := SORT(list);
+  PRINT("Mediaan: " + MEDIAN(list));
+  modi := MODE(list);
+  FOR index FROM 1 TO SIZE(modi) DO
+    PRINT("Modus " + index + ": " + modi(index));
+  END;
+END;

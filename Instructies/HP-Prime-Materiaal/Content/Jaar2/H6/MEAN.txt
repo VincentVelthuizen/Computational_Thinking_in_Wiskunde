@@ -1,0 +1,8 @@
+EXPORT MEAN(list)
+BEGIN
+  LOCAL sum := 0, iterator;
+  FOR iterator FROM 1 TO SIZE(list) DO
+    sum := sum + list(iterator);
+  END;
+  RETURN sum/SIZE(list);
+END;

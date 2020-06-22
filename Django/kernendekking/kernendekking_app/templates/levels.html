@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Kerndoelen{% endblock %}
+
+{% block content %}
+
+<h1>{{ current_level }}</h1>
+
+<ul>
+{% for level in levels %}
+	{% include "sublevels.html" with level=level append=segments|add:level.short_name %}
+{% endfor %}
+</ul>
+
+{% endblock %}

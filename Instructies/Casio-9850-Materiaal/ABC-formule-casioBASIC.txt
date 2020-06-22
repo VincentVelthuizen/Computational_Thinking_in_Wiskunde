@@ -1,0 +1,39 @@
+'Dit programma berekent de discriminant en de oplossingen van AX^2+BX+C.
+"AX^2+BX+C=0"; 'Geeft een duiding van de parameters.
+'Vraag om de waarden van A, B en C.
+"A="? -> A; 
+"B="? -> B;
+"C="? -> C;
+B^2-4AC -> D; 'Bereken de discriminant en sla deze op in D.
+'Bereken de nulpunten.
+'|D| wordt gebruikt ipv D. Zo worden foutmelingen voorkomen.
+(-B-$\smash{\sqrt{}}$Abs D)$\div$(2A) -> X; 'Linker nulpunt.
+(-B+$\smash{\sqrt{}}$Abs D)$\div$(2A) -> Y; 'Rechter nulpunt.
+ClrText;
+'Geef A,B,C en D weer.
+Locate 1,1,"A=";
+Locate 3,1,A;
+Locate 1,2,"B=";
+Locate 3,2,B;
+Locate 15,1,"C=";
+Locate 17,1,C;
+Locate 15,2,"D=";
+Locate 17,2,D;
+D<0$\Rightarrow$Goto 1;
+D=0$\Rightarrow$Goto 2;
+D>0$\Rightarrow$Goto 3;
+Lbl 1;
+Locate 1,4,"D<0 dus geen nulpuntn"; 'nulpunten zou buiten het scherm eindigen.
+Stop;
+Lbl 2;
+Locate 1,4,"D=0 dus 1 nulpunt";
+Locate 3,6,"X=";
+Locate 5,6,X;
+Stop;
+Lbl 3;
+Locate 1,4,"D>0 dus 2 nulpunten";
+Locate 3,6,"XL=";
+Locate 6,6,X,
+Locate 3,7,"XR=";
+Locate 6,7,Y;
+Stop;

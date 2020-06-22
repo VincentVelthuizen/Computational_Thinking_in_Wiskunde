@@ -1,0 +1,11 @@
+EXPORT SORT(list)
+BEGIN
+  LOCAL sorted_list := {}, index;
+
+  WHILE( SIZE(list) > 0 ) DO
+    index := MINDEX(list);
+    sorted_list := CONCAT(sorted_list,{list(index)});
+    list := CONCAT(SUB(list,1,index),SUB(list,index,SIZE(list));
+  END;
+  RETURN sorted_list;
+END;

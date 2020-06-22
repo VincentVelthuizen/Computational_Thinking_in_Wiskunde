@@ -1,0 +1,177 @@
+\documentclass[a4paper]{article}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsfonts,amsmath,amstext,amssymb,caption,listings,mathtools,tikz}
+\usepackage[dutch]{babel}
+\usepackage{enumitem}
+\captionsetup{width = 0.8\textwidth, font=small, textfont=it, labelfont=bf}
+\addto\captionsdutch{%
+  \def\lstlistingname{Programma}}
+\addto\extrasdutch{
+  \def\figureautorefname{Figuur}}
+
+
+
+\usepackage[hidelinks,bookmarksopenlevel=3]{hyperref}
+\usetikzlibrary{babel}
+\setlength{\parindent}{0pt}
+\setcounter{tocdepth}{3}
+\newlength{\leftoflengthopdr}
+%%%%%%%%%%
+% Macrodefinities
+%%%%%%%%%%
+\makeatletter
+\newcounter{opdracht}
+\newcounter{deelopdracht}[opdracht]
+\newcounter{niveaudummie}
+\newcounter{dummie}
+
+\input{lstenkleurdefs}
+
+\newif\if@beginopdracht
+
+\colorlet{opdrachtkleur}{J1H2} %maak kleur
+%\setcounter{opdracht}{0} Zie einde minipage
+\def\nivset#1{\setcounter{niveaudummie}{#1}\Roman{niveaudummie}}
+\def\opdracht{\@ifnextchar[{\opdrachtniv}{\opdrachtzonderniv}}
+\def\opdrachtzonderniv#1{%
+	\begin{tikzpicture}[baseline=(nodename.base)]
+		 	\node[draw=opdrachtkleur,fill=opdrachtkleur,text=white] (nodename) {\bfseries #1};
+		\end{tikzpicture}%
+		}
+\def\opdrachtniv[#1]{%
+	\refstepcounter{opdracht}%
+	\bigskip\bigskip%
+	\makebox[0pt][r]{%
+		\begin{tikzpicture}[baseline=(nodename.base)]
+		 	\path[draw=opdrachtkleur] (-3em,-0.75em) rectangle (1em,0.75em);
+		 	\node (nodename) [text=opdrachtkleur] at (-2em,0) {\bfseries\nivset{#1}};
+		 	\path[draw=opdrachtkleur,fill=opdrachtkleur,text=white] (-1em,-0.75em) rectangle (1em,0.75em) (0,0) node {\bfseries P\theopdracht};
+		\end{tikzpicture}%
+		\hspace{\leftoflengthopdr}%
+		}%
+		\@beginopdrachttrue%
+		\ignorespaces%
+	}
+\def\?{%
+	\refstepcounter{deelopdracht}\if@beginopdracht\else{\hfill\\}\fi\makebox[1em][l]{\bfseries\thedeelopdracht}%
+	\@beginopdrachtfalse%
+	}
+\def\refopdracht#1{%
+		\@ifnextchar\bgroup%
+		{\@deelopdrachtref{#1}}%
+		{\opdracht{P\ref{#1}}}%
+		}
+\def\@deelopdrachtref#1#2{\opdracht{P\ref{#1}(\textbf{\ref{#2}})}}
+\makeatother
+\newcommand\ggd{\ensuremath{\operatorname{ggd}}}
+\newcommand\kgv{\ensuremath{\operatorname{kgv}}}
+\renewcommand\thedeelopdracht{\alph{deelopdracht}}
+
+\let\labeloud\label
+\def\label#1{\labeloud{#1}\ignorespaces}
+%%%%%%%%%%
+% Einde macrodefinities
+%%%%%%%%%%
+\author{Benny Aalders \and Vincent Velthuizen}
+\title{\vspace*{-1.9in}Voorbeeld van een opdrachtenboek met {``Computational-Thinking-opdrachten''} aansluitend bij de methode {Getal \& Ruimte}}
+\date{Versie: \today}
+
+\begin{document}\maketitle
+%\begin{abstract}
+%	Het bestand dat voor u ligt betreft een in ontwikkeling zijnde versie. Wij (de auteurs) weten dat er nog ruimte is voor verbetering(en). Op bepaalde punten 
+%\end{abstract}
+In dit document staan voorbeeldopgaven die in een programmeerboek zouden kunnen staan dat wordt meegeleverd met een lesboek/een serie lesboeken. Bij wijze van voorbeeld hebben we voor de lesboekenserie Getal \& Ruimte  gekozen. 
+
+Bij de opdrachten zijn niveaus aangegeven. Het meetniveau is ordinaal. Toewijzing van de niveaus is op dit moment enkel gebaseerd op onze eigen inschatting. De niveaus dienen louter om een vorm van structuur zichtbaar tijdens het ontwikkelingsproces. 
+
+\paragraph{Niveaus I--II} Dit zijn opdrachten op instapniveau; i.e.: vertrouwd raken met de mogelijkheden en methodes. Dit zou voor vmbo het eindniveau  kunnen  zijn. 
+Bij deze opdrachten is het programmeerniveau relatief laag of nul. Het draait hier meer om het gebruiken van de beschikbare technologie.
+
+\paragraph{Niveau III} Dit zijn opdrachten waar programmeren een grotere rol speelt. Dit is voor havo/VWO bedoeld.  Bij het maken van deze opdrachten heeft de leerling alle basiskennis nodig over het bijbehorende hoofdstuk uit zijn lesboek. 
+
+\paragraph{Niveau IV} Deze opdrachten gaan wat dieper in op de stof. Over het algemeen wordt hier getest wat een programma doet met ongebruikelijke invoer. 
+
+Een voorbeeld: In \refopdracht {randvoorw}{negatief} wordt gevraagd wat er gebeurt wanneer je $\ggd(-2,4)$ met je programma probeert uit te rekenen. Een leerling moet dan nadenken over de precieze definitie van de \ggd\ en of $\ggd(-2,4)$ wel betekenis heeft. Daarnaast moet hij nadenken over zijn code: ``Krijg ik een foutmelding of een foute uitvoer?''; Waarom zegt mijn programma $\ggd(-2,4)=2$, terwijl $\ggd(-2,4)$ niet gedefinieerd is?"
+
+Een leerling moet zich bij deze opdrachten verdiepen in de betekenis van wiskundige begrippen en in de precieze werking van zijn code. Dit is waarschijnlijk alleen voor gevorderde leerlingen weggelegd.
+
+\paragraph{Niveaus V--VI} Diepergaande opdrachten over de geschreven code. Hierbij ligt de nadruk meer op het coderen dan op de wiskundige onderwerpen waarvoor de code gebruikt wordt.
+
+\bigskip
+Hoewel de opdrachten allemaal betrekking hebben op een bepaald hoofdstuk/\allowbreak bepaalde paragraaf, zou je ervoor kunnen kiezen om sommige opdrachten later in het jaar te behandelen. 
+
+Een voorbeeld: In opdracht \refopdracht{randvoorw}{negatief} wordt gevraagd wat er gebeurt wanneer je $\ggd(-2,4)$ met je programma probeert uit te rekenen. Hier kan naar gekeken worden op het moment dat negatieve getallen behandeld worden. Dit hoeft niet per se tijdens het hoofdstuk over de \ggd\ en het \kgv\ te gebeuren. 
+
+
+\setlength{\leftoflengthopdr}{0pt} %Ruimte tussen opdr en tekst verwijderen
+\begin{center}
+	\framebox[0.85\textwidth][r]{%
+		\begin{minipage}{0.75\textwidth}\setcounter{opdracht}{5}
+			\begin{itemize}
+				\item[Legenda:] 
+				\item [\opdracht{1}] Opdracht 1 uit het reguliere tekstboek.
+				\item [{\opdracht[2]}] Opdracht 6 uit het programmeren-boek. Deze opdracht is van niveau 2.
+			\end{itemize}
+			\setcounter{opdracht}{0}
+		\end{minipage}%
+		}
+\end{center}
+\setlength{\leftoflengthopdr}{10pt} %Ruimte tussen opdr en tekst herstellen
+\renewcommand{\thesubsection}{}
+\renewcommand{\thesubsubsection}{}
+\newcommand{\screenshotHW}[1]{\begin{center}\includegraphics[scale=0.2]{./opdrachten/#1}\end{center}}
+\clearpage
+
+\colorlet{opdrachtkleur}{black!40}
+\section*{Hello world!}
+In deze sectie vind je een basale uitleg van het programmeren met de HP-Prime. We schrijven een ``Hello world!'' en geven een aantal gebruikerstips.
+
+Zet je apparaat aan en ga naar `Program' ([shift] [1]).
+Je ziet nu je programmacatalogus met daarin de programma's \texttt{ISDELER} en \texttt{HELLOWORLD}. 
+	\screenshotHW{0hv/programmacatalogus}
+Door op `Nieuw' te drukken (touchscreen) kun je een nieuw programma aanmaken. De invoer zie je onderaan het scherm en niet achter naam.
+	\screenshotHW{0hv/titel2}
+Elk programma begint met \texttt{EXPORT $<$NAAM$>$()}. Hier is $<$NAAM$>$ de naam van het programma. Tussen de haakjes geef je de parameters van het programma (in dit geval geen). \\
+	\begin{minipage}{\textwidth}
+		\begin{lstlisting}[caption={\texttt{HELLOWORLD}},label=helloworld]
+			EXPORT HELLOWORLD()
+			BEGIN
+				LOCAL T := "Hello world!";
+				PRINT(T);
+			END;
+		\end{lstlisting}
+	\end{minipage}
+Zoals je ziet declareer je een variabele met [{$\coloneqq$}]. Maak je variabele altijd local. 
+Aan T wordt de string ``Hello world!'' toegekend. 
+Via Cmds (linksonder op je touchscreen) kom je bij I/O en PRINT. 
+	\screenshotHW{0hv/print}
+PRINT(T) zorgt ervoor dat het programma de waarde van T laat zien (in dit geval ``Hello world!'').
+
+
+
+\clearpage
+\colorlet{opdrachtkleur}{J1H2}
+\section*{Getal \& Ruimte}
+\subsection*{1 HAVO/VWO}
+\subsubsection{Hoofdstuk 2.2 - De ggd en het kgv}
+\input{./opdrachten/1hv/2.2.tex}
+
+%\colorlet{opdrachtkleur}{J2H6}
+%\clearpage
+%\subsection*{2 HAVO/VWO}
+%\subsubsection{Hoofdstuk 6.4 - Gemiddelde, mediaan en modus}
+%\input{./opdrachten/2hv/6.4.tex}
+%
+%\clearpage
+%
+%%\subsection*{3 VWO}
+%%\subsubsection*{Hoofdstuk 5 - Allerlei vergelijkingen}
+%
+%\colorlet{opdrachtkleur}{J3H5}
+%\subsection*{3 VWO}
+%\subsubsection{Hoofdstuk 5.2  - De abc-formule}
+%\textit{Onderstaande opdrachten zijn uitgewerkt aan de hand van het VWO boek (omdat er geen HAVO/VWO boek is voor klas 3). De opdrachtnummers komen niet overeen met het HAVO boek maar de opdrachten zouden verder wel bruikbaar moeten zijn.}
+%
+%\input{./opdrachten/3h/5.2.tex}
+
+\end{document}

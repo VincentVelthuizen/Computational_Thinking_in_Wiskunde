@@ -1,0 +1,13 @@
+EXPORT MINDEX(list)
+BEGIN
+LOCAL min, mindex, iterator;
+  min := list(1);
+  mindex := 1;
+  FOR iterator FROM 2 TO SIZE(list) DO
+    IF list(iterator) < min THEN
+      min := list(iterator);
+      mindex := iterator;
+    END;
+  END;
+  RETURN mindex;
+END;

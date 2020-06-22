@@ -1,0 +1,8 @@
+EXPORT GGD_EUCLID(A, B)
+BEGIN
+  IF a MOD b $\neq$ 0 THEN
+    RETURN GGD_EUCLID(B, A mod B);
+  ELSE
+    RETURN B;
+  END;
+END;

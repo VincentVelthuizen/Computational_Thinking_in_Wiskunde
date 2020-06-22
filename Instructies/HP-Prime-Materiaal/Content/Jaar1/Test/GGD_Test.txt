@@ -1,0 +1,41 @@
+CHECK1(A,B,C);
+
+EXPORT GGD_Test()
+BEGIN
+  LOCAL allgood := true;
+  PRINT();
+
+  allgood := CHECK1(2, 4, 2) AND allgood;
+  allgood := CHECK1(2, 4, 2) AND allgood;
+  allgood := CHECK1(4, 2, 2) AND allgood;
+  allgood := CHECK1(4, 4, 4) AND allgood;
+  allgood := CHECK1(7, 14, 7) AND allgood;
+  allgood := CHECK1(14, 7, 7) AND allgood;
+  allgood := CHECK1(15, 7, 1) AND allgood;
+  allgood := CHECK1(7, 15, 1) AND allgood;
+  allgood := CHECK1(1, 1, 1) AND allgood;
+  allgood := CHECK1(1, 15, 1) AND allgood;
+  allgood := CHECK1(144, 108, 36) AND allgood;
+
+  IF allgood THEN
+    WAIT(3); 
+    PRINT();
+    PRINT("Alles is goed");
+  ELSE
+    PRINT("Er is iets verkeerd");
+  END;
+
+END;
+
+CHECK1(A, B, C)
+BEGIN
+  PRINT("GGD(" + A + ", " + B + ") = " + C);
+  LOCAL RESULT := GGD(A,B);
+  IF RESULT ≠ C THEN
+    PRINT(RESULT + " is verkeerd");
+    WAIT(1);
+    RETURN false;
+  ELSE
+    RETURN true;
+  END;
+END;

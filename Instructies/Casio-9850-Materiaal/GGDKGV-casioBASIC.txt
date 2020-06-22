@@ -1,0 +1,42 @@
+'Dit programma berekent de GGD en het KGV van een lijst met getallen. Als een van deze getallen $\leq 0$ is, dan wordt opnieuw om een lijst gevraagd. Wanneer de lijst een getal bevat wat niet geheel is, dan volgt er geen enkele foutmelding. 
+ClrText;
+"Geef een lijst"? -> List 1; 'Max 255 getallen
+0 -> K;
+0 -> G;
+Max List 1 -> M;
+M -> N; 'Sla het maximum op
+Prod List 1 -> P;
+'Lijst 4 en Lijst 5 krijgen evenveel cellen als de invoerlijst (Lijst 1).
+'De GGD en het KGV komen in elke cel van Lijst 4 en Lijst 5 respectievelijk te staan. 
+Dim List 1 -> Dim List 4;
+Dim List 1 -> Dim List 5;
+'Zoek de GGD.
+Do;
+	List 1 $\div$ M -> List 2;
+	Int List 2 = List 2 -> List 3;
+	If Min(List 3) = 1;
+		Then M -> G;
+	IfEnd;
+	M-1 -> M;
+LpWhile G = 0 And M > 0;
+N -> M; 'Zet M weer op Max(Lijst 1).
+1 -> X; 'Dummie (zie verderop)
+'Zoek het KGV.
+Do;
+	M $\div$ List 1 -> List 2;
+	Int List 2 = List 2 -> List 3;
+	If Min(List 3) = 1;
+		Then M -> K;
+	IfEnd;
+	X+1 -> X;
+	XN -> M; 'Probeer alleen veelvouden van het grootste getal. !\label{veelvouden}!
+LpWhile K = 0 And P $\geq$ M;
+'Scherm met uitleg voor gebruiksvriendelijkheid.
+ClrText;
+Locate 1,2,"Je ziet straks:";
+Locate 1,4,"Kolom 1: Invoer";
+Locate 1,5,"Kolom 2: De  GGD";
+Locate 1,6,"Kolom 3: Het KGV"!\dh!
+Fill(G,List 4);
+Fill(K,List 5);
+List->Mat(List 1,List 4,List 5) 'De uitvoer.

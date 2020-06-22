@@ -1,0 +1,79 @@
+\documentclass[a4paper]{article}
+\usepackage{babelbib}
+\usepackage[dutch]{babel}
+\usepackage{listings,mathtools,xcolor}
+\author{Benny Aalders \and Vincent Velthuizen}
+\title{Voorbeeld van een voorwoord}
+\date{\today}
+
+\input{lstenkleurdefs.tex}
+\newcommand\variable[1]{$\langle\text{\scshape#1}\rangle$}
+\let\slash/
+\catcode`\/=13
+\def/{\slash\allowbreak}
+\newcommand{\notitie}[3][*]{\underline{#2}#1\marginpar{\hspace{-1.3ex}#1\scriptsize#3}}
+\setlength{\marginparwidth}{100pt}
+\newcommand\ggd{\ensuremath{\operatorname{ggd}}}
+\newcommand\kgv{\ensuremath{\operatorname{kgv}}}
+
+\hyphenation{hulp-pro-gramma programmeer-platform}
+\begin{document}\maketitle\nocite{progplatform,instructies,opdrachten}
+\section*{Aan de docent(e)}
+Leerlingen hebben tijdens het doorwerken van Getal \& Ruimte de vrijheid/opdracht om na te denken over het inzetten van een computerprogramma als hulpmiddel.  Leerlingen kunnen zelf (pseudo)code schrijven die ze kan helpen met de stof waaraan ze werken. 
+
+Wanneer leerlingen besluiten om een programma te schrijven dat ze kan helpen, kunnen ze zich wenden tot dit materiaal. Het materiaal in deze methode bestaat uit opgaves die twee doelen verwezenlijken:
+
+\begin{itemize}
+\item Ze helpen de leerlingen controleren of hun code goed geschreven is.
+\item Ze helpen de leerlingen de stof dieper te doorgronden.
+\end{itemize}
+
+Het kan zijn dat de leerlingen op weg geholpen moeten worden doormiddel van een hulpfunctie. Alle gangbare rekenmachines ondersteunen hier functies voor en voor programmeren op een computer kan de Elektronische Leeromgeving van de school hiervoor gebruikt worden. 
+
+\paragraph{Voorbeeld: \S 2.2 (De $\operatorname{ggd}$ en het $\operatorname{kgv}$)  uit Getal en Ruimte HAVO/VWO 1}\ \hfill\\
+Een leerling kan, al dan niet met wat sturing, bedenken dat het berekenen van de \ggd\  een taak is die hij zou willen automatiseren. Bedenken hoe een computer bepalen kan of $a|b$, is voor leerlingen op dit moment nog te hoog gegrepen. Hier komt de databank met hulpprogramma's om de hoek kijken. 
+
+In de databank met hulpprogramma's staat het programma \texttt{ISDELER(A, B)}. Wanneer het aangeroepen wordt geeft ``TRUE'' terug als A een deler is van B, anders geeft het ``FALSE''. Dit kan gebruikt worden in een ``OR'' constructie. Een leerling zou nu de volgende pseudocode kunnen schrijven (en een implementatie ervan):
+
+\begin{lstlisting}[language=pseudo, caption={Pseudo code voor \ggd}, label={pseudo:ggd}]
+ggd
+invoer : A, B
+uitvoer: GGD
+
+voor elk GETAL tussen 1 en A
+	als GETAL een deler van A is
+		voeg GETAL toe aan DELERS_A
+		
+voor elk GETAL tussen 1 en B
+	als het GETAL een deler van B is
+		voeg GETAL toe aan DELERS_B
+		
+begin onder aan lijsten DELERS_A en DELERS_B
+	als de waardes gelijk zijn
+		geef GGD
+	als de waarde uit DELERS_A groter dan die uit DELERS_B is
+		ga 1 omhoog in de lijst DELERS_A
+	als de waarde uit DELERS_A kleiner dan die uit DELERS_B is
+		ga 1 omhoog in de lijst DELERS_B
+\end{lstlisting}
+
+De opgaves dagen de leerling uit om een aantal randgevallen te overwegen en de code goed te testen.
+\begin{itemize}
+	\item Controleer je code door te kijken of je de juiste antwoorden krijgt bij de opgave die je eerder zelf moest doen.
+	\item Controleer of $\ggd(12,30)=\ggd(30,12)$. Controleer dit ook voor de bij de vorige opdracht bedoelde opgaven.
+	\item Wat geeft jouw code voor $\ggd(1,8)$, $\ggd(9,9)$ en $\ggd(1,1)$?
+	\item Kun je met jouw code vraag de grootste gemene deler van drie getallen uitrekenen ook uitrekenen? Leg uit waarom wel of niet.
+\end{itemize}
+Als leerlingen dieper in willen gaan op deze opgaven kunnen ze vragen krijgen als:
+\begin{itemize} 
+\item Wat gebeurt er als $a=0$ of $b=0$? En wat als $a=b=0$?
+\item Wat gebeurt er als $a<0$ of $b<0$? En wat als $a<0$ en $b<0$?
+\item Wat gebeurt er als $a$ of $b$ geen geheel getal is? En wat als ze dit allebei niet zijn?
+\end{itemize}
+In deze paragraaf wordt ook het $\kgv$ behandeld. Hierbij is een vergelijkbare set opgaven beschikbaar.
+
+\bigskip
+De vragen zijn hoofdzakelijk ten dienste van de leerdoelen wiskunde. Er zijn in dit boek echter ook vragen opgenomen die leerdoelen programmeren proberen te verwezenlijken. Dit wordt duidelijk vermeld. De docent kan zelf inschatten of (een deel van) zijn leerlingen deze opdrachten ook moeten maken.  Bijvoorbeeld: ``Waarom is het niet handig alle veelvouden van een getal te berekenen?'' 
+
+Tot slot zijn er vragen die eisen stellen aan de output. Hiermee wordt aandacht besteed aan het visualiseren van gegevens, een overstijgend leerdoel wiskunde. Bijv.: De code hierboven geeft als output de \ggd\  en verder niks. Maar we hadden ook kunnen kiezen voor de output: ``$\ggd(a,b)=\langle ggd\rangle$''. 
+\end{document}

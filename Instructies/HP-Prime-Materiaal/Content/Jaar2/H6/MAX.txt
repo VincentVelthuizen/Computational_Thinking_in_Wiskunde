@@ -1,0 +1,11 @@
+EXPORT MAX(list)
+BEGIN
+  LOCAL max, iterator;
+  max := list(0);
+  FOR iterator FROM 1 TO SIZE(list) DO
+    IF list(iterator) > max THEN
+      max := list(iterator);
+    END;
+  END;
+  RETURN max;
+END;

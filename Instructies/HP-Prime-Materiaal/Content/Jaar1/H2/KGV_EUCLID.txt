@@ -1,0 +1,8 @@
+EXPORT KGV_EUCLID(A, B)
+BEGIN
+  LOCAL KGV := A;
+  WHILE (KGV MOD B) $\neq$ 0 DO
+    KGV := KGV + A;
+  END;
+  RETURN KGV;
+END;

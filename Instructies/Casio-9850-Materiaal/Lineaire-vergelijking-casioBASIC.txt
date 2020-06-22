@@ -1,0 +1,23 @@
+'Dit programma geeft een lineare vergelijking van de lijn door twee gegeven punten. 
+ClrText;
+"Punt 1"? -> List 1; 'Invoer: {x,y}.
+"Punt 2"? -> List 2;
+ClrText;
+List 1[1]=List 2[1]$\Rightarrow$Goto 1; 'Als de lijn verticaal is, ga naar Lbl 1.
+(List 2[2]-List 1[2])$\div$(List 2[1]-List 1[1]) -> A; 'Richtingscoeficient.
+List 2[2]-AList 2[1] -> B; 'Startgetal.
+'Output voor niet-verticale lijn.
+Locate 1,1,"De lijn $y=ax+b$ met";
+Locate 1,3,"A=";
+Locate 3,3,A;
+Locate 1,4,"B=";
+Locate 3,4,B;
+Locate 1,6,"gaat door de punten.";
+Stop;
+Lbl 1;
+'Output voor verticale lijn.
+Locate 1,1,"De lijn $x=c$ met";
+Locate 1,3,"C=";
+Locate 1,5,List 1[1];
+Locate 1,5,"gaat door de punten.";
+Stop;

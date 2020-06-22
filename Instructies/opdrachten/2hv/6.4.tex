@@ -1,0 +1,88 @@
+\opdracht[2] \label{mean}%
+\? Zorg dat je programma een lijst als parameter verwacht zodat je een lijst hebt om mee te werken.\label{ingelezenlijst}
+\? Bereken de som van alle elementen in de lijst.
+\? Bereken en geef het gemiddelde van de elementen in de lijst.
+
+\opdracht[2] \label{max}%
+\? Schrijf een methode om het grootste element in de lijst te vinden.
+\? Neem het programma van \refopdracht{mean}{ingelezenlijst} en test je methode met de volgende lijsten:\label{testserie}
+	\begin{itemize}
+		\item $\{2, 2, 2\}$
+		\item $\{1, 2, 3, 4, 5\}$
+		\item $\{5, 4, 3, 2, 1\}$
+		\item $\{-1, -2, -3, -4, -5\}$
+		\item $\{\}$
+	\end{itemize}
+
+\opdracht[2] 
+\? Schrijf een methode om de plek in de lijst (index) van kleinste element in de lijst te vinden.
+\? Neem de testserie uit opdracht \refopdracht{max}{testserie} om je methode te testen.
+
+\opdracht[3] Schrijf een programma voor elk van de volgende taken:\label{median}%
+
+\? Verwijder het kleinste element van een lijst.
+\? Neem het programma van \refopdracht{mean}{ingelezenlijst} en maak een gesorteerde lijst. (\textbf{hint:} voeg het kleinste element van de ingevoerde lijst toe aan een nieuwe lijst en verwijder het dan uit de originele lijst, herhaal dit tot de originele lijst leeg is.)\label{gesorteerdelijst}
+\? Neem de testserie uit opdracht \refopdracht{max}{testserie} om of te testen het sorteren goed werkt.
+\? Geef de mediaan van de lijst. (\textbf{hint:} je zult twee gevallen moeten onderscheiden, een lijst met een even aantal elementen, en een met een oneven aantal elementen.)
+\? Neem de test serie uit opdracht \refopdracht{max}{testserie} om te testen of je programma goed werkt.
+\? Test je programma ook met de volgende lijsten:
+	\begin{itemize}
+		\item $\{2, 2, 2, 2\}$
+		\item $\{1, 2, 3, 4, 5, 6\}$
+		\item $\{5, 4, 3, 2, 1, 0\}$
+		\item $\{6, 1, 5, 2, 4, 3\}$
+	\end{itemize}
+
+\opdracht[3] \label{mode}%
+Het is voor een computer lastig om de lijst als geheel te bekijken. Het is makkelijker om te doen alsof we een lijst hebben die bestaat uit een element, waar we vervolgens de rest van de lijst, stuk voor stuk aan toevoegen. Laten we kijken naar de gesorteerde lijst $\{4, 4, 5, 6, 6, 6\}$.
+
+Als we alleen het eerste element bekijken ($\{4\}$), dan is de modus niet zo moeilijk te bepalen. Het is handig om op te slaan hoe vaak dit element voorkomt.
+
+Wanneer we het volgende element toevoegen, hoe verandert dan de modus? Omdat de lijst gesorteerd is, zijn er 2 mogelijkheden: We krijgen nog een voorkomen van hetzelfde element, of we hebben alle voorkomens van dat element gehad en krijgen een nieuw element.
+
+Als het een extra voorkomen is van hetzelfde element dan komt dat element dus een keer vaker voor dan we tot nu toe dachten.
+
+Als het een nieuw element is, dan willen we onthouden hoe vaak we het tot nu toe meest voorkomende element hebben gezien, en een nieuwe teller starten voor het nieuwe element.
+
+Laten we dit toepassen op bovenstaande lijst. 
+
+\bigskip
+\? Bepaal voor elk van onderstaande sublijsten, de modus en hoe vaak die voorkomt.
+
+\begin{enumerate}
+	\item $\{4\}$
+	\item $\{4, 4\}$
+	\item $\{4, 4, 5\}$
+	\item $\{4, 4, 5, 6\}$
+\end{enumerate}
+
+Wanneer we het volgende element toevoegen (nog een $6$) dan moeten we even goed nadenken. We weten dat $4$ de modus is, en dat die $2$ keer voorkomt. Maar we vinden straks een tweede $6$. Dit betekent dat 4 en 6 beide tweemaal voorkomen. We doen nu alsof de modus twee antwoorden heeft, $4$ en $6$.
+
+\? Doe voor onderstaande lijst hetzelfde als wat je bij de vorige lijsten deed.
+
+\begin{enumerate}[resume]
+	\item $\{4, 4, 5, 6, 6\}$
+\end{enumerate}
+
+Gelukkig is er nog een $6$ en lost het bovenstaande probleem zichzelf op. $6$ komt nu drie keer voor en is dus de nieuwe modus.
+
+\? Doe voor onderstaande lijst hetzelfde als wat je bij de vorige lijsten deed.
+
+\begin{enumerate}[resume]
+	\item $\{4, 4, 5, 6, 6, 6\}$
+\end{enumerate}
+
+\opdracht[4] \label{mode2}%
+Schrijf een programma dat de modus uitrekent van een gegeven lijst. Je kunt hierbij gebruik maken van het algoritme uit opdracht \refopdracht{mode}.
+
+\opdracht[3]
+\? Maak een programma dat het gemiddelde, de mediaan en de modus geeft van een ingevoerde lijst.
+\? Test je programma met je antwoord op opdrachten \opdracht{47}, \opdracht{48} en \opdracht{49(\textbf{a})}.
+
+\opdracht[5]
+\? Waarom is het in \refopdracht{mode2}\ handig om met een gesorteerde lijst te beginnen?
+\? Geef in grote O notatie aan hoeveel beter het is om bij \refopdracht{mode2}\ een gesorteerde lijst te gebruiken dan een ongesorteerde lijst.
+\? Geef in grote O notatie de complexiteit van het sorteeralgoritme bij \refopdracht{median}{gesorteerdelijst}.
+
+\opdracht[6]
+ Zoek en implementeer een beter sorteeralgoritme in plaats van die bij \refopdracht{median}{gesorteerdelijst}.

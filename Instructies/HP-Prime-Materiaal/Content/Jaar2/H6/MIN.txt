@@ -1,0 +1,11 @@
+EXPORT MIN(list)
+BEGIN
+  LOCAL min, iterator;
+  min := list(0);
+  FOR iterator FROM 1 TO SIZE(list) DO
+    IF list(iterator) < min THEN
+      min := list(iterator);
+    END;
+  END;
+  RETURN min;
+END;

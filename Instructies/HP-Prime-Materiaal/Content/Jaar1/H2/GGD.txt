@@ -1,0 +1,29 @@
+EXPORT GGD(VAR1,VAR2)
+BEGIN
+  LOCAL iterator1, iterator2, deler, delers1 := {}, delers2 := {};
+  FOR deler FROM 1 TO VAR1 DO
+    IF ISDELER(deler, VAR1) THEN
+      delers1 := CONCAT(delers1,{deler});
+    END;
+  END;
+
+  FOR deler FROM 1 TO VAR2 DO
+    IF ISDELER(deler, VAR2) THEN
+      delers2 := CONCAT(delers2,{deler});
+    END;
+  END;
+
+  iterator1 := SIZE(delers1);
+  iterator2 := SIZE(delers2);
+
+  WHILE iterator1 >= 0 AND iterator2 >= 0 DO
+    IF delers1(iterator1) == delers2(iterator2) THEN
+      RETURN delers1(iterator1);
+    END;
+    IF delers1(iterator1) > delers2(iterator2) THEN
+      iterator1 := iterator1 - 1;
+    ELSE
+      iterator2 := iterator2 - 1;
+    END;
+  END;
+END;

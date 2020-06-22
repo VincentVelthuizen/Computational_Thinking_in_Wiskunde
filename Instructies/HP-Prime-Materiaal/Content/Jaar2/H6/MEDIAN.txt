@@ -1,0 +1,14 @@
+EXPORT MEDIAN(list)
+BEGIN
+  LOCAL middle;
+  list := SORT(list);
+  IF SIZE(list) mod 2 == 0 THEN
+    // Even aantal elementen in de lijst
+    middle := SIZE(list)/2;
+    RETURN (list(middle)+list(middle+1))/2;
+  ELSE
+    // Oneven aantal elementen in de lijst
+    middle := (SIZE(list)+1)/2;
+    RETURN list(middle);
+  END;
+END;

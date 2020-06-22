@@ -1,0 +1,25 @@
+\opdracht[3]In \autoref{foute-abc} zie je een script voor het oplossen van $ax^2+bx+c$. Dit script hoort bij het programma \texttt{Foute-ABC} in je bibliotheek. Wat gaat er fout in dit programma? 
+
+\begin{lstlisting}[language=pseudo, rulesepcolor=\color{opdrachtkleur}, caption={Script van het programma \texttt{Foute-ABC.}}, label={foute-abc}]
+ABC Formule
+invoer : A, B, C
+uitvoer: XL, XR
+
+XL is -B-$\lstsqrt{} (B^{2}-4AC)$ / 2A
+XR is -B+$\lstsqrt{} (B^{2}-4AC)$ / 2A
+geef XL, XR
+\end{lstlisting}
+
+\opdracht[3] \label{abc-formule}%
+\? Schrijf een programma dat
+\begin{itemize}
+	\item De formule $ax^{2}+bx+c$ weergeeft aan de gebruiker en vervolgens vraagt om $a$, $b$ en $c$.
+	\item De discriminant uitrekent en weergeeft
+	\item Op basis van de discriminant aangeeft hoeveel oplossingen er zijn.
+	\item De oplossing geeft als er \'e\'en oplossing is.
+	\item De oplossingen geeft als er meerdere oplossingen zijn.
+\end{itemize}
+\? Controleer je code door te kijken of je de juiste antwoorden krijgt bij opdracht \opdracht{16} en \opdracht{17}.
+
+\opdracht[4] Uit de vergelijking $y=ax^2+bx+c$ kun je nog meer informatie halen. Schrijf nu code waarmee je de co\"ordinaten van de top van de parabool $y=ax^2+bx+c$ kunt weergeven. Je mag bij deze opdracht  zelf kiezen of je hiervoor je programma uit \refopdracht{abc-formule}\  gaat uitbreiden, of dat je een nieuw programma maakt.
+

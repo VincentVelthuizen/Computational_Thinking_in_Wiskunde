@@ -1,0 +1,37 @@
+EXPORT MODE(list)
+BEGIN
+  LOCAL maxOcc, currentOcc, maxVal, currentVal, index;
+  list := SORT(list);
+
+  maxOcc := 1;
+  maxVal := {list(1)};
+  currentOcc := 1;
+  currentVal := list(1);
+  FOR index FROM 2 TO SIZE(list) DO
+    IF ( list(index) == currentVal ) THEN
+      // Zelfde getal nog een keer aantal voorkomens + 1
+      currentOcc := currentOcc + 1;
+      IF currentOcc > maxOcc THEN
+     // Is dit het nieuwe maximum?
+        maxOcc := currentOcc;
+        maxVal := {currentVal};
+      ELSE 
+        IF currentOcc == maxOcc THEN
+          // Is deze gelijk gekomen met een oud maximum, dan hebben we mogelijk meer modi, voeg deze toe
+          maxVal := CONCAT(maxVal, {currentVal});
+        END;
+      END;
+    ELSE
+      // Nieuwe waarde gevonden, reset de teller en de "huidige waarde"
+      currentVal := list(index);
+      currentOcc := 1;
+      IF currentOcc == maxOcc THEN
+        // Is deze gelijk gekomen met een oud maximum, dan hebben we mogelijk meer modi, voeg deze toe
+        maxVal := CONCAT(maxVal, {currentVal});
+      END;
+    END;
+  END;
+
+  RETURN maxVal;
+  
+END;

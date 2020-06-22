@@ -1,0 +1,29 @@
+EXPORT ABCD()
+BEGIN
+  LOCAL A,B,C,D,X0,X1;
+  MSGBOX("Schrijf de formule om naar\n ax^2+bx+c\n en geef a, b en c.");
+
+  INPUT(A);
+  INPUT(B);
+  INPUT(C);
+
+  D := B*B-4*A*C;
+  PRINT();
+  PRINT("De discriminant is: " + D);
+
+  IF ( D < 0 ) THEN 
+    PRINT("Er zijn geen oplossingen");
+  ELSE
+    IF ( D == 0 ) THEN
+      PRINT("Er is een oplossing");
+      X0 := (-B)/(2*A);
+      PRINT("x = " + X0);
+    ELSE
+      PRINT("Er zijn twee oplossingen");
+      X0 := (-B - $\lstsqrt{}$(D))/(2*A);
+      X1 := (-B + $\lstsqrt{}$(D))/(2*A);
+      PRINT("x0 = " + X0);
+      PRINT("x1 = " + X1);
+    END;
+  END;
+END;

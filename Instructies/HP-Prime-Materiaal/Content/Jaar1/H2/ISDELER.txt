@@ -1,0 +1,11 @@
+EXPORT ISDELER(A, B)
+BEGIN
+
+  IF FLOOR(A) $\neq$ ABS(A) THEN
+    RETURN FALSE;
+  END;
+  IF FLOOR(B) $\neq$ ABS(B) THEN
+    RETURN FALSE;
+  END;
+  RETURN B MOD A == 0;
+END;

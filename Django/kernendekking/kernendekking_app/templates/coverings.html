@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Dekkingen{% endblock %}
+
+{% block content %}
+
+<h1>{{ current_level }}</h1>
+
+<table>
+	<tr>
+		<th>Gedekte element</th>
+		<th>Aard van dekking</th>
+		<th>Mate van dekking</th>
+	</tr>
+{% for covering in coverings %}
+	<tr>
+		<td>{{ covering.covered_level.long_name }}</td>
+		<td>{{ covering.nature }}</td>
+		<td>{{ covering.measure.name }}</td>
+	</tr>
+{% endfor %}
+</table>
+
+{% endblock %}
